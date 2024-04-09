@@ -1,0 +1,7 @@
+{
+    "clientToken"   : "",    
+    "databaseToken" : "",
+    
+    "clientPrefix"  : ";",
+    "developerIds"  : [""]
+}

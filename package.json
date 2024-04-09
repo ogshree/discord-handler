@@ -1,0 +1,25 @@
+{
+  "name": "@application/bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "structures/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "glob": "^10.3.12",
+    "mongoose": "^8.2.4",
+    "ms": "^2.1.3"
+  },
+  "keywords": [
+    "discord-bot"
+  ],
+  "author": "",
+  "license": "MIT"
+}
