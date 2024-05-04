@@ -6,7 +6,7 @@ const { connect, set } = require('mongoose');
 class CustomClient extends Client {
   MessageCommands = new Collection();
   SlashCommands = new Collection();
-  Icon = require('../../lib/plugins/design/icons.js');
+  Icon = require('../../lib/plugins/design/icons.js').Icon;
   Developer = developerIds;
 
   start() {
