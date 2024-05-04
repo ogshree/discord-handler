@@ -1,8 +1,6 @@
-const {
-  ApplicationCommandType,
-  ChatInputCommandInteraction,
-} = require('discord.js');
+const { ApplicationCommandType, ChatInputCommandInteraction } = require('discord.js');
 const { CustomClient } = require('../../structures/classes/customclient.js');
+/** @type {import('../../lib/types/index.d.ts').CommandExport} */
 
 module.exports = {
   type: ApplicationCommandType.ChatInput,
@@ -11,8 +9,7 @@ module.exports = {
 
   dm_permission: false,
   Perms: {
-    BotPermissions: ['SendMessages'],
-    UserPermissions: ['SendMessages'],
+    BotPermissions: ['SendMessages'], UserPermissions: ['SendMessages'],
     devOnly: false,
   },
 

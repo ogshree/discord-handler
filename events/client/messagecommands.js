@@ -27,9 +27,11 @@ module.exports = {
         if (command.Perms.UserPermissions && command.Perms.UserPermissions.length !== 0)
             if (!member.permissions.has(command.Perms.UserPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} You need \`${command.Perms.UserPermissions.join(", ")}\` permission(s) to execute this command!`)] });
 
+
         if (command.Perms.BotPermissions && command.Perms.BotPermissions.length !== 0)
             if (!guild.members.me.permissions.has(command.Perms.BotPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} I need \`${command.Perms.BotPermissions.join(", ")}\` permission(s) to execute this command!`)] });
 
+        
         if (command.Perms.devOnly && !client.Developer.includes(author.id)) return;
 
         command.callback(client, message, args);

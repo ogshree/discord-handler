@@ -1,5 +1,6 @@
 const { CustomClient } = require('../../structures/classes/customclient.js');
 const { Message } = require('discord.js');
+/** @type {import('../../lib/types/index.d.ts').CommandExport} */
 
 module.exports = {
   name: 'ping',
@@ -7,8 +8,7 @@ module.exports = {
   description: 'Get info about bot',
 
   Perms: {
-    BotPermissions: ['SendMessages'],
-    UserPermissions: ['SendMessages'],
+    BotPermissions: ['SendMessages'], UserPermissions: ['SendMessages'],
     devOnly: true,
   },
 
