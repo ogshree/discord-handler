@@ -11,7 +11,7 @@ module.exports = {
 
     callback: async (client, interaction) => {
 
-        if (!interaction.isChatInputCommand() && !interaction.isContextMenuCommand()) return;
+        if (!interaction.isChatInputCommand() && !interaction.isContextMenuCommand() && !interaction.isAutocomplete()) return;
         const { user, guild, commandName, member } = interaction;
 
         if (!guild) return;
@@ -32,6 +32,6 @@ module.exports = {
 
         if (command.Perms.devOnly && !client.Developer.includes(user.id)) return interaction.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} Warning! Access Restricted Developer Command Detected.`)], ephemeral: true });
 
-        command.callback(client, interaction);
+        command.callback({ client, interaction });
     }
 }

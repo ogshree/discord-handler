@@ -30,5 +30,4 @@ interface CommandExportType {
   Perms: CommandPerms,
   callback: executeType
 };
-
 export type CommandExport = CommandExportType;
