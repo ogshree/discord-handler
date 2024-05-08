@@ -1,6 +1,5 @@
-const { CustomClient } = require('../../structures/classes/customclient.js');
 const { Message } = require('discord.js');
-/** @type {import('../../lib/types/index.d.ts').CommandExport} */
+/** @type {import('../../lib/types/index.ts').MessageCommands} */
 
 module.exports = {
   name: 'ping',
@@ -12,13 +11,7 @@ module.exports = {
     devOnly: true,
   },
 
-  /**
-   * @param {CustomClient} client;
-   * @param {Message} message;
-   * @param {String[]} args;
-   */
-
-  callback: async (client, message, args) => {
+  callback: async ({ client, message, args }) => {
     return message.reply({ content: `Ping: **${client.ws.ping} ms**` });
-  },
-};
+  }
+}
