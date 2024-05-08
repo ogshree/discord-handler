@@ -1,25 +1,18 @@
-const { ApplicationCommandType, ContextMenuCommandInteraction } = require('discord.js');
-const { CustomClient } = require('../../structures/classes/customclient.js');
-/** @type {import('../../lib/types/index.d.ts').CommandExport} */
+const { ApplicationCommandType } = require('discord.js');
+/** @type {import('../../lib/types/index.ts').SlashCommands} */
 
 module.exports = {
-  type: ApplicationCommandType.User, 
+  type: ApplicationCommandType.User,
   name: 'Avater',
 
-  dm_permission: false,
+  dmPermission: false,
   Perms: {
     BotPermissions: ['SendMessages'], UserPermissions: ['SendMessages'],
     devOnly: false,
   },
 
-  /**
-   * @param {ContextMenuCommandInteraction} interaction;
-   * @param {CustomClient} client;
-   */
-
-  callback: async (client, interaction) => {
-    await interaction.deferReply({ ephemeral: true });
+  callback: async ({ client, interaction }) => {
     const target = await interaction.guild.members.fetch(interaction.targetId);
-    return interaction.followUp({ content: target.displayAvatarURL({ extension: 'png', size: 4096 }) });
-  },
-};
+    return interaction.reply({ content: target.displayAvatarURL({ extension: 'png', size: 4096 }) });
+  }
+}

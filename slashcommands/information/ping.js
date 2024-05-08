@@ -1,24 +1,18 @@
-const { ApplicationCommandType, ChatInputCommandInteraction } = require('discord.js');
-const { CustomClient } = require('../../structures/classes/customclient.js');
-/** @type {import('../../lib/types/index.d.ts').CommandExport} */
+const { ApplicationCommandType } = require('discord.js');
+/** @type {import('../../lib/types/index.ts').SlashCommands} */
 
 module.exports = {
   type: ApplicationCommandType.ChatInput,
-  name: 'help',
+  name: 'ping',
   description: 'Get information about the bot.',
 
-  dm_permission: false,
+  dmPermission: false,
   Perms: {
     BotPermissions: ['SendMessages'], UserPermissions: ['SendMessages'],
     devOnly: false,
   },
 
-  /**
-   * @param {ChatInputCommandInteraction} interaction
-   * @param {CustomClient} client
-   */
-
-  callback: async (client, interaction) => {
-    interaction.reply({ content: `Ping: **${client.ws.ping} ms**` });
-  },
-};
+  callback: async ({ client, interaction }) => {
+    return interaction.reply({ content: `Ping: **${client.ws.ping} ms**` });
+  }
+}
