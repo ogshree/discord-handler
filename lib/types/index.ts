@@ -26,7 +26,7 @@ interface SlashCommandType {
   nsfw?: boolean;
   options: CommandOptions[];
   dmPermission?: boolean;
-  defaultMemberPermissions: Permission[];
+  defaultMemberPermissions?: Permission[];
   minLength?: number;
   maxLength?: number;
   Perms: CommandPerms;
