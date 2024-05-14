@@ -1,7 +1,6 @@
 {
     "clientToken"   : "",    
-    "databaseToken" : "",
-    
+
     "clientPrefix"  : ";",
     "developerIds"  : [""]
 }
