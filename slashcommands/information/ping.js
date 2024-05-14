@@ -1,5 +1,5 @@
 const { ApplicationCommandType } = require('discord.js');
-/** @type {import('../../lib/types/index.ts').SlashCommands} */
+/** @type {import('../../lib/types/index.ts').SLASH} */
 
 module.exports = {
   type: ApplicationCommandType.ChatInput,
@@ -7,8 +7,8 @@ module.exports = {
   description: 'Get information about the bot.',
 
   dmPermission: false,
-  Perms: {
-    BotPermissions: ['SendMessages'], UserPermissions: ['SendMessages'],
+  perms: {
+    botPermissions: ['SendMessages'], userPermissions: ['SendMessages'],
     devOnly: false,
   },
 

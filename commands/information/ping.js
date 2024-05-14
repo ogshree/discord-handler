@@ -1,13 +1,13 @@
 const { Message } = require('discord.js');
-/** @type {import('../../lib/types/index.ts').MessageCommands} */
+/** @type {import('../../lib/types/index.ts').MESSAGE} */
 
 module.exports = {
   name: 'ping',
   aliases: ['ms', 'ws'],
   description: 'Get info about bot',
 
-  Perms: {
-    BotPermissions: ['SendMessages'], UserPermissions: ['SendMessages'],
+  perms: {
+    botPermissions: ['SendMessages'], userPermissions: ['SendMessages'],
     devOnly: true,
   },
 
