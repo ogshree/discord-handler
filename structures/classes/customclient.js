@@ -1,7 +1,5 @@
-const { developerIds, clientToken, databaseToken } = require('../../lib/configuration.json');
-const { logger } = require('../../lib/functions/common.js');
+const { developerIds, clientToken } = require('../../lib/configuration.json');
 const { Client, Collection } = require('discord.js');
-const { connect, set } = require('mongoose');
 
 class CustomClient extends Client {
   MessageCommands = new Collection();
@@ -10,17 +8,7 @@ class CustomClient extends Client {
   Developer = developerIds;
 
   start() {
-    if (!databaseToken) {
-      logger.Warn('database', `No Mongoose Url`);
-      return process.exit();
-    }
-
-    this.login(clientToken).then(() => {
-      set('strictQuery', true);
-      connect(databaseToken)
-        .then((data) => { logger.Info('database', `Connected to: ${data.connection.name}`); })
-        .catch((err) => { logger.Warn('database', `Mongose Connect Error.`); });
-    });
+    this.login(clientToken)
   }
 }
 
