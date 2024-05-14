@@ -6,7 +6,7 @@ const { CustomClient } = require('../../structures/classes/customclient.js');
 
 module.exports = {
   name: Events.ClientReady,
-
+  once: true,
   /** 
    * @param {CustomClient} client;
    */
@@ -16,6 +16,6 @@ module.exports = {
     await delay(2000); loadSlashCommands(client);
     await delay(1000); logger.Info('Client', `${client.user.tag} Is Online!`)
 
-    await client.user.setActivity({ name: `/help`, type: ActivityType.Competing })
+    client.user.setActivity({ name: `/help`, type: ActivityType.Competing })
   }
 }
