@@ -22,15 +22,15 @@ module.exports = {
             return interaction.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} This commands doest't exist!`)], ephemeral: true }) && client.SlashCommands.delete(commandName);
         }
 
-        if (command.Perms.UserPermissions && command.Perms.UserPermissions.length !== 0)
-            if (!member.permissions.has(command.Perms.UserPermissions)) return interaction.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} You need \`${command.Perms.UserPermissions.join(', ')}\` permission(s) to execute this command!`)], ephemeral: true });
+        if (command.perms.userPermissions && command.perms.userPermissions.length !== 0)
+            if (!member.permissions.has(command.perms.userPermissions)) return interaction.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} You need \`${command.perms.userPermissions.join(', ')}\` permission(s) to execute this command!`)], ephemeral: true });
 
 
-        if (command.Perms.BotPermissions && command.Perms.BotPermissions.length !== 0)
-            if (!guild.members.me.permissions.has(command.Perms.BotPermissions)) return interaction.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} I need \`${command.Perms.BotPermissions.join(', ')}\` permission(s) to execute this command!`)], ephemeral: true });
+        if (command.perms.botPermissions && command.perms.botPermissions.length !== 0)
+            if (!guild.members.me.permissions.has(command.perms.botPermissions)) return interaction.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} I need \`${command.perms.botPermissions.join(', ')}\` permission(s) to execute this command!`)], ephemeral: true });
 
 
-        if (command.Perms.devOnly && !client.Developer.includes(user.id)) return interaction.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} Warning! Access Restricted Developer Command Detected.`)], ephemeral: true });
+        if (command.perms.devOnly && !client.Developer.includes(user.id)) return interaction.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} Warning! Access Restricted Developer Command Detected.`)], ephemeral: true });
 
         command.callback({ client, interaction });
     }
