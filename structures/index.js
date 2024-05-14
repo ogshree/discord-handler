@@ -5,11 +5,17 @@ const { GatewayIntentBits, Partials } = require('discord.js');
 
 const client = new CustomClient({
     intents: [
-        GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildVoiceStates
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
     ],
     partials: [
-        Partials.Channel, Partials.Reaction, Partials.User, Partials.GuildMember, Partials.Message
+        Partials.Channel,
+        Partials.Reaction,
+        Partials.User,
+        Partials.GuildMember,
+        Partials.Message
     ],
     failIfNotExists: false
 });
