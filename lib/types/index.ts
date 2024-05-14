@@ -1,15 +1,14 @@
-import { PermissionFlagsBits } from 'discord.js';
+import { PermissionsString } from 'discord.js';
 
-type Permission = keyof typeof PermissionFlagsBits;
 
-interface CommandPerms {
-  BotPermissions: Permission[]; UserPermissions: Permission[];
+interface CommandPermissionOptions {
+  botPermissions: PermissionsString[]; userPermissions: PermissionsString[];
   devOnly?: boolean;
 };
 
-interface CommandOptions {
+interface SubAndGroupCommandOptions {
   type: number; /* ApplicationCommandOptionType.<> */
-  required?: boolean;
+  required?: boolean; // required (default): false
   name: string;
   description: string;
   channelTypes?: number[]; /* [ChannelType.<>] */
@@ -17,30 +16,45 @@ interface CommandOptions {
   choices?: { name: string, value: string }[];
   maxValue?: number;
   minValue?: number;
-};
-
-interface SlashCommandType {
-  type?: number; /* ApplicationCommandType.<> */
-  name: string;
-  description?: string;
-  nsfw?: boolean;
-  options: CommandOptions[];
-  dmPermission?: boolean;
-  defaultMemberPermissions?: Permission[];
   minLength?: number;
   maxLength?: number;
-  Perms: CommandPerms;
-  callback: (parameter: { client: import('../../structures/classes/customclient.js').CustomClient, interaction: import('discord.js').CommandInteraction }) => Promise<any>;
 };
 
-interface MessageCommandType {
+interface CommandOptions {
+  type: number; /* ApplicationCommandOptionType.<> */
+  required?: boolean; // required (default): false
+  name: string;
+  description: string;
+  options: SubAndGroupCommandOptions[];
+  channelTypes?: number[]; /* [ChannelType.<>] */
+  autocomplete?: boolean;
+  choices?: { name: string, value: string }[];
+  maxValue?: number;
+  minValue?: number;
+  minLength?: number;
+  maxLength?: number;
+};
+
+interface SlashCommandsData {
+  type?: number; /* ApplicationCommandType.<> */
+  name: string;
+  description: string;
+  nsfw?: boolean;
+  options?: CommandOptions[];
+  dmPermission?: boolean;
+  defaultMemberPermissions?: PermissionsString[];
+  perms: CommandPermissionOptions;
+  callback: (options: { client: import('../../structures/classes/customclient.js').CustomClient, interaction: import('discord.js').CommandInteraction }) => Promise<any>;
+};
+
+interface MessageCommandsData {
   name: string;
   aliases?: string[];
   description?: string;
-  Perms: CommandPerms;
-  callback: (parameter: { client: import('../../structures/classes/customclient.js').CustomClient, message: import('discord.js').Message, args: string[] }) => Promise<any>;
+  perms: CommandPermissionOptions;
+  callback: (options: { client: import('../../structures/classes/customclient.js').CustomClient, message: import('discord.js').Message, args: string[] }) => Promise<any>;
 };
 
 
-export type SlashCommands = SlashCommandType;
-export type MessageCommands = MessageCommandType;
+export type SLASH = SlashCommandsData;
+export type MESSAGE = MessageCommandsData;
