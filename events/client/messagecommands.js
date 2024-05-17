@@ -11,9 +11,10 @@ module.exports = {
      */
 
     callback: async (client, message) => {
-        const { author, guild, member } = message;
 
         if (message.channel.type !== ChannelType.GuildText) return;
+
+        const { author, guild, member } = message;
         const prefix = clientPrefix;
 
         if (author.bot || !message.guild || !message.content.toLowerCase().startsWith(prefix)) return;
