@@ -11,7 +11,7 @@ module.exports = {
    * @param {CustomClient} client;
    */
 
-  callback: async (client) => {
+  script: async (client) => {
     await loadMessages(client);
     await delay(2000); loadSlashCommands(client);
     await delay(1000); logger.Info('Client', `${client.user.tag} Is Online!`)
