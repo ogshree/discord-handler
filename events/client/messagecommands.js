@@ -10,7 +10,7 @@ module.exports = {
      * @param {CustomClient} client 
      */
 
-    callback: async (client, message) => {
+    script: async (client, message) => {
 
         if (message.channel.type !== ChannelType.GuildText) return;
 
@@ -25,16 +25,16 @@ module.exports = {
         if (!command) return;
         const embed = new EmbedBuilder().setColor('Red')
 
-        if (command.perms.userPermissions && command.perms.userPermissions.length !== 0)
-            if (!member.permissions.has(command.perms.userPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} You need \`${command.perms.userPermissions.join(", ")}\` permission(s) to execute this command!`)] });
+        if (command.others.userPermissions && command.others.userPermissions.length !== 0)
+            if (!member.permissions.has(command.others.userPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} You need \`${command.others.userPermissions.join(", ")}\` permission(s) to execute this command!`)] });
 
 
-        if (command.perms.botPermissions && command.perms.botPermissions.length !== 0)
-            if (!guild.members.me.permissions.has(command.perms.botPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} I need \`${command.perms.botPermissions.join(", ")}\` permission(s) to execute this command!`)] });
+        if (command.others.botPermissions && command.others.botPermissions.length !== 0)
+            if (!guild.members.me.permissions.has(command.others.botPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} I need \`${command.others.botPermissions.join(", ")}\` permission(s) to execute this command!`)] });
 
 
-        if (command.perms.devOnly && !client.Developer.includes(author.id)) return;
+        if (command.others.devOnly && !client.Developer.includes(author.id)) return;
 
-        command.callback({ client, message, args });
+        command.script({ client, message, args });
     }
 }
