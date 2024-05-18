@@ -1,17 +1,19 @@
 const { ApplicationCommandType } = require('discord.js');
-/** @type {import('../../lib/types/index.ts').SLASH} */
+/** @type {import('../../lib/types/index.ts').SlashCommandsData} */
 
 module.exports = {
-  type: ApplicationCommandType.User,
-  name: 'Avater',
+  data: {
+    type: ApplicationCommandType.User,
+    name: 'Avater',
+    dm_permission: false,
+  },
 
-  dmPermission: false,
-  perms: {
+  others: {
     botPermissions: ['SendMessages'], userPermissions: ['SendMessages'],
     devOnly: false,
   },
 
-  callback: async ({ client, interaction }) => {
+  script: async ({ client, interaction }) => {
     const target = await interaction.guild.members.fetch(interaction.targetId);
     return interaction.reply({ content: target.displayAvatarURL({ extension: 'png', size: 4096 }), ephemeral: true });
   }
