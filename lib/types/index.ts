@@ -29,7 +29,7 @@ interface AdditionalOptions {
 export interface SlashCommandsData {
   data: RESTPostAPIApplicationCommandsJSONBody,
   others: AdditionalOptions;
-  callback: (options: { client: import('../../structures/classes/customclient.js').CustomClient, interaction: import('discord.js').CommandInteraction }) => Promise<any>;
+  script: (options: { client: import('../../structures/classes/customclient.js').CustomClient, interaction: import('discord.js').CommandInteraction }) => Promise<any>;
 };
 
 export interface MessageCommandsData {
@@ -57,7 +57,7 @@ export interface MessageCommandsData {
    */
   example?: string[];
   others: AdditionalOptions;
-  callback: (options: { client: import('../../structures/classes/customclient.js').CustomClient, message: import('discord.js').Message, args: string[] }) => Promise<any>;
+  script: (options: { client: import('../../structures/classes/customclient.js').CustomClient, message: import('discord.js').Message, args: string[] }) => Promise<any>;
 };
 
 export { };
