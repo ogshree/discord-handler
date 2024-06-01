@@ -26,13 +26,14 @@ interface AdditionalOptions {
 };
 
 
-export interface SlashCommandsData {
+interface SlashCommandsData {
   data: RESTPostAPIApplicationCommandsJSONBody,
   others: AdditionalOptions;
   script: (options: { client: import('../../structures/classes/customclient.js').CustomClient, interaction: import('discord.js').CommandInteraction }) => Promise<any>;
 };
 
-export interface MessageCommandsData {
+
+interface MessageCommandsData {
   /**
    * The names that the bot needs to execute the current MessageCommands.
    */
@@ -41,7 +42,7 @@ export interface MessageCommandsData {
    * The `aliases` are an array of multiple MessageCommands names set that the bot uses to execute the current command.
    * 
    * @example
-   *  aliases: ['ping','ms','ws']
+   *  aliases: ['ban','bn','banned']
    */
   aliases?: string[];
   /**
@@ -60,4 +61,4 @@ export interface MessageCommandsData {
   script: (options: { client: import('../../structures/classes/customclient.js').CustomClient, message: import('discord.js').Message, args: string[] }) => Promise<any>;
 };
 
-export { };
+export { SlashCommandsData, MessageCommandsData };
