@@ -26,11 +26,11 @@ module.exports = {
         const embed = new EmbedBuilder().setColor('Red')
 
         if (command.others.userPermissions && command.others.userPermissions.length !== 0)
-            if (!member.permissions.has(command.others.userPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} You need \`${command.others.userPermissions.join(", ")}\` permission(s) to execute this command!`)] });
+            if (!member.permissions.has(command.others.userPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} You need \`${command.others.userPermissions || command.others.userPermissions.join(", ")}\` permission(s) to execute this command!`)] });
 
 
         if (command.others.botPermissions && command.others.botPermissions.length !== 0)
-            if (!guild.members.me.permissions.has(command.others.botPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} I need \`${command.others.botPermissions.join(", ")}\` permission(s) to execute this command!`)] });
+            if (!guild.members.me.permissions.has(command.others.botPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} I need \`${command.others.botPermissions || command.others.botPermissions.join(", ")}\` permission(s) to execute this command!`)] });
 
 
         if (command.others.devOnly && !client.Developer.includes(author.id)) return;
