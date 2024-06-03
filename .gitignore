@@ -55,6 +55,9 @@ web_modules/
 # Optional npm cache directory
 .npm
 
+# Mac directory hidden file
+.DS_Store
+
 # Optional eslint cache
 .eslintcache
 
