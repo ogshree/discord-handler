@@ -1,4 +1,4 @@
-import { PermissionsString, RESTPostAPIApplicationCommandsJSONBody } from 'discord.js';
+import { PermissionsString, ApplicationCommandType, ChatInputApplicationCommandData, MessageApplicationCommandData, UserApplicationCommandData } from 'discord.js';
 
 interface AdditionalOptions {
   /**
@@ -17,17 +17,22 @@ interface AdditionalOptions {
    * userPermissions: 'KickMembers'
    * or
    * userPermissions: ['KickMembers', 'ModerateMembers']
-   */
+  */
   userPermissions?: PermissionsString | PermissionsString[];
   /**
-   * A boolean value that indicates whether the command is for developer-only registration or not.
-   */
+    * A boolean value that indicates whether the command is for developer-only registration or not.
+  */
   devOnly?: boolean;
 };
 
+type CommandProps<T> = T extends ApplicationCommandType.ChatInput ? ChatInputApplicationCommandData : T extends ApplicationCommandType.Message ? MessageApplicationCommandData : T extends ApplicationCommandType.User ? UserApplicationCommandData : never;
+
+type CommandData = CommandProps<ApplicationCommandType> & { 
+  /* global?: boolean */ 
+};
 
 interface SlashCommandsData {
-  data: RESTPostAPIApplicationCommandsJSONBody,
+  data: CommandData;
   others: AdditionalOptions;
   script: (options: { client: import('../../structures/classes/customclient.js').CustomClient, interaction: import('discord.js').CommandInteraction }) => Promise<any>;
 };
