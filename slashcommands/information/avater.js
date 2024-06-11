@@ -5,7 +5,7 @@ module.exports = {
   data: {
     type: ApplicationCommandType.User,
     name: 'Avater',
-    dm_permission: false,
+    dmPermission: false,
   },
 
   others: {

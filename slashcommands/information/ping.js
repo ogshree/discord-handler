@@ -6,7 +6,7 @@ module.exports = {
     type: ApplicationCommandType.ChatInput,
     name: 'ping',
     description: 'Get information about the bot.',
-    dm_permission: false,
+    dmPermission: false,
   },
 
   others: {
