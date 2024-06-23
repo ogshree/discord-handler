@@ -6,15 +6,14 @@ module.exports = {
     type: ApplicationCommandType.ChatInput,
     name: 'ping',
     description: 'Get information about the bot.',
-    dmPermission: false,
+    dmPermission: false
   },
 
   others: {
-    botPermissions: ['SendMessages'], userPermissions: ['SendMessages'],
-    devOnly: false,
+    botPermissions: ['SendMessages'], userPermissions: ['SendMessages'], devOnly: false
   },
 
   script: async ({ client, interaction }) => {
     return interaction.reply({ content: `Ping: **${client.ws.ping} ms**` });
   }
-}
+};
