@@ -1,5 +1,5 @@
-const { Events, ChatInputCommandInteraction, EmbedBuilder } = require('discord.js');
 const { CustomClient } = require('../../structures/classes/customclient.js');
+const { Events, ChatInputCommandInteraction, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: Events.InteractionCreate,
@@ -23,7 +23,7 @@ module.exports = {
         }
 
         if (command.others.devOnly && !client.Developer.includes(user.id)) return interaction.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} Warning! Access Restricted Developer Command Detected.`)], ephemeral: true });
-        
+
         if (command.others.userPermissions && command.others.userPermissions.length !== 0)
             if (!member.permissions.has(command.others.userPermissions)) return interaction.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} You need \`${command.others.userPermissions || command.others.userPermissions.join(', ')}\` permission(s) to execute this command!`)], ephemeral: true });
 
@@ -32,4 +32,4 @@ module.exports = {
 
         command.script({ client, interaction });
     }
-}
+};

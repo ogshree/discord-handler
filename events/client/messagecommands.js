@@ -1,5 +1,5 @@
-const { Events, Message, EmbedBuilder } = require('discord.js');
 const { CustomClient } = require('../../structures/classes/customclient.js');
+const { Events, Message, EmbedBuilder } = require('discord.js');
 const { clientPrefix } = require('../../lib/configuration.json');
 
 module.exports = {
@@ -22,7 +22,7 @@ module.exports = {
         const embed = new EmbedBuilder().setColor('Red')
 
         if (command.others.devOnly && !client.Developer.includes(author.id)) return;
-        
+
         if (command.others.userPermissions && command.others.userPermissions.length !== 0)
             if (!member.permissions.has(command.others.userPermissions)) return message.reply({ embeds: [embed.setDescription(`${client.Icon.Static.Wrong} You need \`${command.others.userPermissions || command.others.userPermissions.join(", ")}\` permission(s) to execute this command!`)] });
 
@@ -31,4 +31,4 @@ module.exports = {
 
         command.script({ client, message, args });
     }
-}
+};
