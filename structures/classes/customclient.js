@@ -3,14 +3,13 @@ const { Client, Collection } = require('discord.js');
 
 class CustomClient extends Client {
   MessageCommands = new Collection();
-  SlashCommands = new Collection();
-
-  Icon = require('../../lib/plugins/design/icons.js').Icon;
-  Developer = developerIds;
+   SlashCommands = new Collection();
+    Icon = require('../../lib/plugins/design/icons.js').Icon;
+     Developer = developerIds;
 
   start() {
-    this.login(clientToken)
-  }
-}
+    this.login(clientToken);
+  };
+};
 
 module.exports = { CustomClient };
