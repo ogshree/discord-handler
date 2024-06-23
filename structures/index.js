@@ -1,6 +1,6 @@
 const { CustomClient } = require('./classes/customclient.js');
 require('../lib/plugins/crashdefender.js').Shield();
-const { loadEvents } = require('../lib/functions/application-ecs-loader.js');
+const appUtil = require('../lib/functions/application-ecs-loader.js');
 const { GatewayIntentBits, Partials } = require('discord.js');
 
 const client = new CustomClient({
@@ -8,16 +8,17 @@ const client = new CustomClient({
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMembers,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.MessageContent
     ],
     partials: [
         Partials.Channel,
         Partials.Reaction,
         Partials.User,
         Partials.GuildMember,
-        Partials.Message
+        Partials.Message,
+        Partials.ThreadMember
     ],
     failIfNotExists: false
 });
 
-client.setMaxListeners(0); loadEvents(client); client.start();
+client.setMaxListeners(0); appUtil.loadEvents(client); client.start();
