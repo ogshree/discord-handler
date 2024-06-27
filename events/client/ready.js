@@ -1,4 +1,4 @@
-const sleep = require('node:timers/promises').setTimeout;
+const { setTimeout: sleep } = require('node:timers/promises');
 const appUtil = require('../../lib/functions/application-ecs-loader.js');
 const { logger } = require('../../lib/functions/common.js');
 const { Events } = require('discord.js');
